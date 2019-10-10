@@ -10,7 +10,9 @@ public class StatisticsTestSuite {
     @Test
     public void doesCalculateCorrectlyStatistics () {
         Statistics statistics = new StatisticsStub();
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statistics);
+        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
+        statisticsCalculator.calculateAdvStatistics(statistics);
+        Assert.assertEquals(5, statisticsCalculator.getAmountOfUsers());
         Assert.assertEquals(5, statisticsCalculator.getAmountOfUsers());
         Assert.assertEquals(10, statisticsCalculator.getAvergeOfPostsForSingleUser(), 0);
         Assert.assertEquals(60, statisticsCalculator.getAverageOfCommentsForSingleUser(),0);
@@ -26,9 +28,9 @@ public class StatisticsTestSuite {
         String string = "AmountOfUser: 5" + "\n" +
                 "AmountOfPosts: 50"+ "\n" +
                 "AmountOfComments: 300" + "\n" +
-                "AvergeOfPostsForSingleUser: 10.0"  + "\n" +
-                "AverageOfCommentsForSingleUser: 60.0"  + "\n" +
-                "averageOfCommentsForSinglePost: 6.0";
+                "AvergeOfPostsForSingleUser: 10"  + "\n" +
+                "AverageOfCommentsForSingleUser: 60"  + "\n" +
+                "AverageOfCommentsForSinglePost: 6";
         Assert.assertEquals(string, statisticsCalculator.showStatistics());
     }
 

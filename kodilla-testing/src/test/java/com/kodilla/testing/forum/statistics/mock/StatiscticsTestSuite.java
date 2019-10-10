@@ -23,7 +23,10 @@ public class StatiscticsTestSuite {
         usersList.add("Ania");
         usersList.add("Honorata");
         when(statisticsMock.usersNames()).thenReturn(usersList);
+        when(statisticsMock.commentsCount()).thenReturn(300);
+        when(statisticsMock.postsCount()).thenReturn(50);
         StatisticsCalculator statisticsCalculator = new StatisticsCalculator(statisticsMock);
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
         Assert.assertEquals(5, statisticsCalculator.getAmountOfUsers());
     }
 }
