@@ -23,7 +23,8 @@ public class ShapeCollectorTestSuite {
         list.add(sh);
         list.add(sq);
         ShapeCollector shapeCollector = new ShapeCollector(list);
-        Assert.assertTrue(shapeCollector.removeFigure(sh));
+        shapeCollector.removeFigure(sh);
+        Assert.assertEquals(1, shapeCollector.getList().size());
     }
 
     @Test

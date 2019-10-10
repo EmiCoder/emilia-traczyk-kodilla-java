@@ -17,8 +17,8 @@ public class ShapeCollector {
         list.add(shape);
     }
 
-    public boolean removeFigure (Shape shape) {
-        return (list.contains(shape)) ? true : false;
+    public void removeFigure (Shape shape) {
+        list.remove(shape);
     }
 
     public Shape getFigure (int n) {
