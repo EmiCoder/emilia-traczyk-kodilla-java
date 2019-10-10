@@ -21,9 +21,19 @@ public class StatisticsCalculator {
     }
 
     private void calculateAdvStatistics(Statistics statistics) {
-        this.avergeOfPostsForSingleUser = amountOfPosts / amountOfUsers;
-        this.averageOfCommentsForSingleUser = amountOfComments / amountOfUsers;
-        this.averageOfCommentsForSinglePost = amountOfComments / amountOfPosts;
+        if (amountOfUsers != 0) {
+            this.avergeOfPostsForSingleUser = amountOfPosts / amountOfUsers;
+            this.averageOfCommentsForSingleUser = amountOfComments / amountOfUsers;
+        } else {
+            this.avergeOfPostsForSingleUser = 0;
+            this.averageOfCommentsForSinglePost = 0;
+        }
+        if (amountOfPosts != 0) {
+            this.averageOfCommentsForSinglePost = amountOfComments / amountOfPosts;
+        } else {
+            this.averageOfCommentsForSinglePost = 0;
+        }
+
     }
 
     public String showStatistics() {
