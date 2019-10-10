@@ -14,27 +14,27 @@ public class ShapeCollector {
     }
 
     public void addFigure (Shape shape) {
-        list.add(shape);
+        this.list.add(shape);
     }
 
     public void removeFigure (Shape shape) {
-        list.remove(shape);
+        this.list.remove(shape);
     }
 
     public Shape getFigure (int n) {
-        return list.get(n);
+        return this.list.get(n);
     }
 
     public Shape[] showFigures() {
         Shape[] tmp = new Shape[this.list.size()];
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < this.list.size(); i++) {
             tmp[i] = list.get(i);
         }
         return tmp;
     }
 
     public ArrayList<Shape> getList() {
-        return list;
+        return this.list;
     }
 
 }
