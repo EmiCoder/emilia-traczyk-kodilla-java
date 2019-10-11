@@ -13,8 +13,18 @@ public class BookLibrary {
 
     public List<Book> listBooksWithCondition(String titleFragment) {
         List<Book> bookList = new ArrayList<Book>();
-        Book book = new Book("The book title", "The book author", 2000);
-        bookList.add(book);
+        if (titleFragment.length() < 3) return bookList;
+        List<Book> resultList = libraryDatabase
+                .listBooksWithCondition(titleFragment);
+        if (resultList.size() > 20) return bookList;
+        bookList = resultList;
         return bookList;
+    }
+
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        List<Book> booksList = new ArrayList<>();
+        if (libraryDatabase.listBooksInHandsOf(libraryUser).size() == 0) {
+            return booksList;
+        } return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 }
