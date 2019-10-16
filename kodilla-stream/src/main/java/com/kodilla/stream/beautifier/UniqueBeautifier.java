@@ -8,12 +8,12 @@ import java.util.stream.Stream;
 public class UniqueBeautifier {
 
     public static String separate (String text) {
-        List<Character> list = text.chars().mapToObj(a -> (char)a).collect(Collectors.toList());
-        String result = "";
-        for (Character character : list) {
-            result += String.valueOf(character) + " ";
+
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < text.length(); i++) {
+            list.add(String.valueOf(text.charAt(i)));
         }
-        return result;
+        return list.stream().collect(Collectors.joining(" "));
     }
 
     public static String changeBeginningEnd (String text) {
