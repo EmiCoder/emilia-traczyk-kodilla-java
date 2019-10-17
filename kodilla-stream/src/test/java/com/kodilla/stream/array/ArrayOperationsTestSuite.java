@@ -12,20 +12,11 @@ public class ArrayOperationsTestSuite {
     public void testGetAverage() {
 
         int[] tab = prepareTabOfInt(5);
-
-        ArrayOperations arrayOperations = new ArrayOperations() {
-            @Override
-            public double getAverage(int[] numbers) {
-                IntStream.range(0, numbers.length).map(x -> numbers[x]).forEach(System.out::println);
-                return IntStream.range(0, numbers.length).map(x -> numbers[x]).average().getAsDouble();
-            }
-        };
-
         double average = 0;
         for (int i = 0; i < tab.length; i++) {
            average += tab[i];
         }
-        Assert.assertEquals(average / tab.length, arrayOperations.getAverage(tab),0);
+        Assert.assertEquals(average / tab.length, ArrayOperations.getAverage(tab),0);
     }
 
     private int[] prepareTabOfInt (int amountOfElements) {
