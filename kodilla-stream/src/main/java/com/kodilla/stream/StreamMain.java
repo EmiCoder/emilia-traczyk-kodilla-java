@@ -1,7 +1,4 @@
 package com.kodilla.stream;
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.beautifier.UniqueBeautifier;
-
 
 public class StreamMain {
 
@@ -17,16 +14,13 @@ public class StreamMain {
 //                                  .map(entry -> entry.getKey() + ": " + entry.getValue())
 //                                  .forEach(System.out::println);
 
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
-        System.out.println(poemBeautifier.beautify("mama i tata", String::toUpperCase));
-        System.out.println(poemBeautifier.beautify("wielkość liter", textToBeautify -> textToBeautify.toUpperCase()));
-        System.out.println(poemBeautifier.beautify("kolejneliteryosobno", UniqueBeautifier::separate));
-        System.out.println(poemBeautifier.beautify("wakacje", UniqueBeautifier::changeBeginningEnd));
-
-
+//        PoemBeautifier poemBeautifier = new PoemBeautifier();
+//        System.out.println(poemBeautifier.beautify("mama i tata", String::toUpperCase));
+//        System.out.println(poemBeautifier.beautify("wielkość liter", textToBeautify -> textToBeautify.toUpperCase()));
+//        System.out.println(poemBeautifier.beautify("kolejneliteryosobno", UniqueBeautifier::separate));
+//        System.out.println(poemBeautifier.beautify("wakacje", UniqueBeautifier::changeBeginningEnd));
 
 
     }
-
 
 }
