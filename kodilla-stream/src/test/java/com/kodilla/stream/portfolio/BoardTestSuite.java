@@ -22,7 +22,7 @@ public class BoardTestSuite {
                 .filter(inProgressTasks::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
                 .map(task -> task.getCreated())
-                .mapToLong(x -> (ChronoUnit.DAYS.between(LocalDate.now(), x)) * -1)
+                .mapToLong(x -> (ChronoUnit.DAYS.between(x, LocalDate.now())))
                 .average().getAsDouble();
 
         Assert.assertEquals(10.0, average, 0);
