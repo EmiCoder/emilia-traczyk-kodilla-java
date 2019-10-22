@@ -1,6 +1,5 @@
 package com.kodilla.rps;
 
-import javax.swing.*;
 import java.util.Random;
 
 public class Round {
@@ -16,10 +15,9 @@ public class Round {
     public void play () {
 
         Random generator = new Random();
-        int playerMove = Integer.parseInt(JOptionPane.showInputDialog("Wykonaj ruch: 1,2,3"));
+        int playerMove = Integer.parseInt(View.input("Wykonaj ruch: 1,2,3"));
         int computerMove = generator.nextInt(2) + 1;
-        System.out.println("PlayerMove: " + playerMove + ", ComputerMove: " + computerMove);
-
+        View.output(("PlayerMove: " + playerMove + ", ComputerMove: " + computerMove), "Moves");
         if ((playerMove == 1 && computerMove == 3) || (playerMove == 2 && computerMove == 1) || (playerMove == 3 && computerMove == 2)) {
             setPlayerResult(this.playerResult + 1);
         } else if ((playerMove == 1 && computerMove == 2) || (playerMove == 2 && computerMove == 3) || (playerMove == 3 && computerMove == 1)) {

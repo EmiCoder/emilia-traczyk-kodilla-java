@@ -1,7 +1,5 @@
 package com.kodilla.rps;
 
-import javax.swing.*;
-
 public class Game {
 
     private int playerResult;
@@ -20,31 +18,30 @@ public class Game {
 
 
     public void intro () {
-        player = JOptionPane.showInputDialog("Podaj imie");
-        amountOfWonRoundToWin = Integer.parseInt(JOptionPane.showInputDialog("Po ilu wygranych nastepuje zwyciestwo?"));
-        JOptionPane.showMessageDialog(new JFrame(),
-                "1 - ROCK, 2 - PAPER, 3 - SCISSORS, x - end of the game, n - restarting the game" ,
-                "Basic rules", JOptionPane.INFORMATION_MESSAGE);
+        player = View.input("Podaj imie");
+        amountOfWonRoundToWin = Integer.parseInt(View.input("Po ilu wygranych nastepuje zwyciestwo?"));
+        View.output("1 - ROCK, 2 - PAPER, 3 - SCISSORS, x - end of the game, n - restarting the game", "Basic rules");
     }
 
     public void play () {
+        int roundCounter = 1;
         while (!end) {
             Round round = new Round(playerResult, computerResult);
             round.play();
             playerResult = round.getPlayerResult();
             computerResult = round.getComputerResult();
+            View.output((player + ": " + playerResult + " Computer: " + computerResult), ("Result of " + roundCounter + " round"));
             if (playerResult == amountOfWonRoundToWin || computerResult == amountOfWonRoundToWin) {
                 end = true;
             }
+            roundCounter++;
         }
 
-        JOptionPane.showMessageDialog(new JFrame(),
-                player + " " + playerResult + ", computer: " + computerResult,
-                "Game result", JOptionPane.INFORMATION_MESSAGE);
+        View.output((player + " " + playerResult + ", computer: " + computerResult), "Game result");
 
-        String finalAnswer = JOptionPane.showInputDialog("Wybierz: x - koniec gry, n - rozpoczęcie nowej gry");
+        String finalAnswer = View.input("Wybierz: x - koniec gry, n - rozpoczęcie nowej gry");
         if (finalAnswer.equals("x")) {
-            System.out.println("Game over");
+            View.output("See You next time :)", "Game over");
         } else {
             playerResult = 0;
             computerResult = 0;
@@ -54,4 +51,3 @@ public class Game {
         }
     }
 }
-
