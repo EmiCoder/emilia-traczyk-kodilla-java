@@ -26,7 +26,7 @@ public class Game {
     public void play () {
         int roundCounter = 1;
         while (!end) {
-            Round round = new Round(playerResult, computerResult);
+            Round round = new Round(player, playerResult, computerResult);
             round.play();
             playerResult = round.getPlayerResult();
             computerResult = round.getComputerResult();
