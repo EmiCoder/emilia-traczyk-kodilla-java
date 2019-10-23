@@ -8,17 +8,15 @@ public class SecondChallenge {
             secondChallenge.probablyIWillThrowException(2,1);
         } catch (ExceptionHandling e) {
             System.out.println("Catched ExceptionHandling");
+        } finally {
+            System.out.println("Finally done!");
         }
     }
 
     public String probablyIWillThrowException(double x, double y) throws ExceptionHandling {
-        try {
-            if(x >= 2 || x < 1 || y == 1.5) {
-                throw new ExceptionHandling();
-            }
-        } finally {
-            System.out.println("Finally done!");
+        if(x >= 2 || x < 1 || y == 1.5) {
+            throw new ExceptionHandling();
         }
-        return "done";
+        return "Done!";
     }
 }
