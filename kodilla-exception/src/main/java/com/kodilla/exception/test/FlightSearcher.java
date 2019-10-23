@@ -14,7 +14,7 @@ public class FlightSearcher {
 
     public static void checkTheFlight (Flight flight) {
         try {
-            FlightSearchLogic.findFilght(flight);
+            FlightSearchLogic.findFlight(flight);
         } catch (RouteNotFoundException e) {
             System.out.println("Catched RouteNotFoundException");
             System.out.println("Message from RouteNotFoundException is: "+ e.getMessage());

@@ -1,21 +1,16 @@
 package com.kodilla.exception.test;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class FlightSearchLogic {
 
-    public static void findFilght(Flight flight) throws RouteNotFoundException {
+    public static void findFlight(Flight flight) throws RouteNotFoundException {
+
         HashMap<String, Boolean> mapOfAirports = prepareMapOfAirports();
 
-        boolean doesExistTheWorkingAirport = false;
-        for (Map.Entry<String, Boolean> set : mapOfAirports.entrySet()) {
-            if (set.getKey().equals(flight.getArrivalAirport())) {
-                doesExistTheWorkingAirport = set.getValue();
-            }
-        }
-
-        if (doesExistTheWorkingAirport) {
+        if (mapOfAirports.entrySet().stream()
+                                    .filter(entry -> entry.getKey().equals(flight.getArrivalAirport()))
+                                    .findAny().filter(x -> x.getValue()).isPresent()) {
             System.out.println("Yes, U can flight to " + flight.getArrivalAirport());
         } else {
             throw new RouteNotFoundException("Airport " + flight.getArrivalAirport() + " " +"doesn't work now");
