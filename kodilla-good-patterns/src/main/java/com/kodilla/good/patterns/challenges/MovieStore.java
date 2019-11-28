@@ -28,5 +28,4 @@ public class MovieStore {
 
         return booksTitlesWithTranslations;
     }
-
 }
