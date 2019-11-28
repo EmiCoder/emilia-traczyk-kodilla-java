@@ -1,6 +1,7 @@
 package com.kodilla.exception.test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class FlightSearchLogic {
 
@@ -10,10 +11,10 @@ public class FlightSearchLogic {
 
         if (mapOfAirports.entrySet().stream()
                                     .filter(entry -> entry.getKey().equals(flight.getArrivalAirport()))
-                                    .findAny().filter(x -> x.getValue()).isPresent()) {
+                                    .anyMatch(Map.Entry::getValue)) {
             System.out.println("Yes, U can flight to " + flight.getArrivalAirport());
         } else {
-            throw new RouteNotFoundException("Airport " + flight.getArrivalAirport() + " " +"doesn't work now");
+            throw new RouteNotFoundException("Airport " + flight.getArrivalAirport() + " doesn't work now");
         }
     }
 
