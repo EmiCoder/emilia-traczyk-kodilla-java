@@ -1,17 +1,29 @@
 package com.kodilla.good.patterns;
 
-import com.kodilla.good.patterns.productOrderSerwis.*;
+import com.kodilla.good.patterns.producentService.*;
 
 public class MainClass {
 
     public static void main(String[] args) {
 
-        OrderRetriever orderRetriever = new OrderRetriever();
-        Order order = orderRetriever.retrieve();
-        ProductOrderService productOrderService = new ProductOrderService(
-                                                        new MailService(), new OrderServiceHandler(), new OrderStore());
 
-        productOrderService.process(order);
+        Food2DoorService food2DoorService = new Food2DoorService(
+                new ContractorList(new Contractor("GlutenFreeShop", new Product("Bread", 46))),
+                new MailService(),
+                new OrderServiceHandler());
+
+        Order order = new Order(new User("Emilia"), "GlutenFreeShop", new Product("Bread", 45));
+        System.out.println(food2DoorService.process(order).isOrdered());
+
+
+
+
+//        OrderRetriever orderRetriever = new OrderRetriever();
+//        Order order = orderRetriever.retrieve();
+//        ProductOrderService productOrderService = new ProductOrderService(
+//                                                        new MailService(), new OrderServiceHandler(), new OrderStore());
+//
+//        productOrderService.process(order);
 
 
 
@@ -25,4 +37,5 @@ public class MainClass {
 //        System.out.println(collect);
 
     }
+
 }
