@@ -1,19 +1,27 @@
 package com.kodilla.good.patterns;
 
-import com.kodilla.good.patterns.producentService.*;
+import com.kodilla.good.patterns.smallAirlineCompany.*;
 
 public class MainClass {
 
     public static void main(String[] args) {
 
+        SmallAirportCompanyFrontDesk smallAirportCompanyFrontDesk = new SmallAirportCompanyFrontDesk(
+                                                            new SercherTheAvaibleFlight(), new ListOfAvaibleFlights());
 
-        Food2DoorService food2DoorService = new Food2DoorService(
-                new ContractorList(new Contractor("GlutenFreeShop", new Product("Bread", 46))),
-                new MailService(),
-                new OrderServiceHandler());
+        smallAirportCompanyFrontDesk.process(new Client("Emilia", new Flight("Sucha Beskidzka", "Berlin")));
 
-        Order order = new Order(new User("Emilia"), "GlutenFreeShop", new Product("Bread", 45));
-        System.out.println(food2DoorService.process(order).isOrdered());
+
+
+
+
+//        Food2DoorService food2DoorService = new Food2DoorService(
+//                new ContractorList(new Contractor("GlutenFreeShop", new Product("Bread", 46))),
+//                new MailService(),
+//                new OrderServiceHandler());
+//
+//        Order order = new Order(new User("Emilia"), "GlutenFreeShop", new Product("Bread", 45));
+//        System.out.println(food2DoorService.process(order).isOrdered());
 
 
 
