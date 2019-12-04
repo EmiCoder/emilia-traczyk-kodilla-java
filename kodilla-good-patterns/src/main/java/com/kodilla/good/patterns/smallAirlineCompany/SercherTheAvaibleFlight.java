@@ -6,16 +6,16 @@ public class SercherTheAvaibleFlight implements ClientRequest {
     @Override
     public boolean avaibleFlight(Client client) {
 
-        for (Flight fly : new FlightsList().getFlightList()) {
-            if (fly.getStart().equals(client.getSearchedFlight().getStart())
-                                        && fly.getEnd().equals(client.getSearchedFlight().getEnd())) {
-                return true;
-            }
-        }
-        return avaibleIndirectFlight(client.getSearchedFlight());
+        if (new FlightsList().getFlightList().stream()
+                .anyMatch(flight -> client.getSearchedFlight().getStart().equals(flight.getStart()) &&
+                                    client.getSearchedFlight().getEnd().equals(flight.getEnd()))) {
+            return true;
+        } return avaibleIndirectFlight(client.getSearchedFlight());
+
     }
 
     private boolean avaibleIndirectFlight(Flight flight) {
+
         for (Flight fly : new FlightsList().getFlightList()) {
             if (flight.getEnd().equals(fly.getEnd())) {
                 for (Flight f : new FlightsList().getFlightList()) {

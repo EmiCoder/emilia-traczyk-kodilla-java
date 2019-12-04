@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns;
 
-import com.kodilla.good.patterns.producentService.*;
+import com.kodilla.good.patterns.producentService.Contractor;
+import com.kodilla.good.patterns.producentService.Product;
+import com.kodilla.good.patterns.smallAirlineCompany.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,23 +13,41 @@ public class MainClass {
 
     public static void main(String[] args) {
 
-//        SmallAirportCompanyFrontDesk smallAirportCompanyFrontDesk = new SmallAirportCompanyFrontDesk(
-//                                                            new SercherTheAvaibleFlight(), new ListOfAvaibleFlights());
+//        List<Flight> list = new ArrayList<>();
+//        list.add(new Flight("Radom", "Warszawa"));
+//        list.add(new Flight("Radom", "Warszawa"));
+//        list.add(new Flight("Katowice", "Berlin"));
 //
-//        smallAirportCompanyFrontDesk.process(new Client("Emilia", new Flight("Katowice", "Warszawa")));
+//        if (list.stream()
+//                .anyMatch(e -> "Radom".equals(e.getStart()) && "Warszawa".equals(e.getEnd()))) {
+//
+//        }
+
+//        list.stream()
+//                .filter(e -> "Katowice".equals(e.getStart()) && "Warszawa".equals(e.getEnd()))
+//                .findFirst()
+//                .orElse(new Flight("Waw", "Row"));
+
+//        System.out.println(dajLot(list, new Flight("Radomiak", "Warszawa")));
+
+
+        SmallAirportCompanyFrontDesk smallAirportCompanyFrontDesk = new SmallAirportCompanyFrontDesk(
+                                                            new SercherTheAvaibleFlight(), new ListOfAvaibleFlights());
+
+        smallAirportCompanyFrontDesk.process(new Client("Emilia", new Flight("Radom", "Rzym")));
 
 
 
 
 
-        ContractorsService contractorsService = new ContractorsService(new GlutenFreeShop(),
-                                                                       new MailService(),
-                                                                       new OrderServiceHandler());
-
-        contractorsService.process(new Order(
-                                         new User("Emilia"),
-                                        "GlutenFreeShop", new Product("GlutenFreeBread", 20)));
-
+//        ContractorsService contractorsService = new ContractorsService(new GlutenFreeShop(),
+//                                                                       new MailService(),
+//                                                                       new OrderServiceHandler());
+//
+//        contractorsService.process(new Order(
+//                                         new User("Emilia"),
+//                                        "GlutenFreeShop", new Product("GlutenFreeBread", 20)));
+//
 
 
 
@@ -59,6 +79,14 @@ public class MainClass {
         list.add(new Contractor("Vital", new Product("Carrot", 345)));
         list.add(new Contractor("ExtraFoosShop", new Product("Natural Yogurt", 547 )));
         return list;
+    }
+
+    public static boolean dajLot(List<Flight> list, Flight client) {
+        if (list.stream()
+                .anyMatch(e -> client.getStart().equals(e.getStart()) &&
+                                client.getEnd().equals(e.getEnd())))  {
+            return true;
+        } return false;
     }
 
 }

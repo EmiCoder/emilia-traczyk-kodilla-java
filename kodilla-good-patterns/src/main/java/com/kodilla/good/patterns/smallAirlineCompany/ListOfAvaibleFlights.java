@@ -21,12 +21,6 @@ public class ListOfAvaibleFlights implements AvaibleFlight{
                 })
                 .collect(Collectors.toList());
 
-//        for (Flight fly : new FlightsList().getFlightList()) {
-//            if (fly.getStart().equals(client.getSearchedFlight().getStart())
-//                    && fly.getEnd().equals(client.getSearchedFlight().getEnd())) {
-//                list.add(fly);
-//            }
-//        }
 
         for (Flight indirectionFly : new FlightsList().getFlightList()) {
             if (client.getSearchedFlight().getEnd().equals(indirectionFly.getEnd())) {
