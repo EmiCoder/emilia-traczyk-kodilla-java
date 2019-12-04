@@ -17,12 +17,15 @@ public class SmallAirportCompanyFrontDesk {
         if (avaibleFlight) {
             List<Flight> flights = avaibleFlights.avaibleFlightsList(client);
             System.out.print("Client: " + client.getName() + "\n" +
+                                "Serching flight: " + client.getSearchedFlight().getStart() + " - "
+                                                    + client.getSearchedFlight().getEnd() + "\n" + "\n" +
                                 "Avaible connection: ");
             for (Flight flight : flights) {
-                System.out.print(flight.getStart() + " - " + flight.getEnd() + ",");
+                System.out.print(flight.getStart() + " - " + flight.getEnd() + ", ");
             }
         } else {
             System.out.println("No avaible connection");
         }
+        System.out.println("\n");
     }
 }

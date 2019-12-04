@@ -5,6 +5,7 @@ public class SercherTheAvaibleFlight implements ClientRequest {
 
     @Override
     public boolean avaibleFlight(Client client) {
+
         for (Flight fly : new FlightsList().getFlightList()) {
             if (fly.getStart().equals(client.getSearchedFlight().getStart())
                                         && fly.getEnd().equals(client.getSearchedFlight().getEnd())) {
