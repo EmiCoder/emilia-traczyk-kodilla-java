@@ -1,5 +1,5 @@
 package com.kodilla.good.patterns.producentService;
 
-public interface AlternativeContractor {
+public interface NewContractor {
     Contractor createNewContractor();
 }

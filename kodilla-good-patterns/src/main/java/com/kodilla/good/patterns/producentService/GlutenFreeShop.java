@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.producentService;
 
-public class GlutenFreeShop implements AlternativeContractor {
+public class GlutenFreeShop implements NewContractor {
 
     @Override
     public Contractor createNewContractor() {

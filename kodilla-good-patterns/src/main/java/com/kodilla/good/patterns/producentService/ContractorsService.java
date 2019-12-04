@@ -4,22 +4,22 @@ import com.kodilla.good.patterns.MainClass;
 
 public class ContractorsService {
 
-    AlternativeContractor alternativeContractor;
+    NewContractor newContractor;
     OrderInformationService orderInformationService;
     OrderService orderService;
 
     public ContractorsService(
-                              AlternativeContractor alternativeContractor,
+                              NewContractor newContractor,
                               OrderInformationService orderInformationService,
                               OrderService orderService) {
-        this.alternativeContractor = alternativeContractor;
+        this.newContractor=newContractor;
         this.orderInformationService = orderInformationService;
         this.orderService = orderService;
     }
 
 
     public OrderDto process(Order order) {
-        Contractor newContractor = alternativeContractor.createNewContractor();
+        Contractor newContractor = this.newContractor.createNewContractor();
         MainClass.contractorList.add(newContractor);
         boolean possibleToOrder = orderService.orderPossible(MainClass.contractorList, order);
 

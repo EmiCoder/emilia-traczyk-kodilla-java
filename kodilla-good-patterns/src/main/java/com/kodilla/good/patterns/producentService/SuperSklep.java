@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.producentService;
 
-public class SuperSklep implements AlternativeContractor {
+public class SuperSklep implements NewContractor {
 
     @Override
     public Contractor createNewContractor() {
