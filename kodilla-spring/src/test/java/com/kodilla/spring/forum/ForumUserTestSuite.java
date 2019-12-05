@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ForumUserTestSuite {
 
     @Test
-    void testGetUsername() {
+    public void testGetUsername() {
 
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
