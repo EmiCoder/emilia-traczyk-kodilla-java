@@ -6,14 +6,9 @@ public class Order {
     private String contractorName;
     private Product product;
 
-    public Order(User user, String contractorName, Product product) {
+    public Order(User user, Product product) {
         this.user = user;
-        this.contractorName=contractorName;
         this.product = product;
-    }
-
-    public String getContractorName() {
-        return contractorName;
     }
 
     public Product getProduct() {

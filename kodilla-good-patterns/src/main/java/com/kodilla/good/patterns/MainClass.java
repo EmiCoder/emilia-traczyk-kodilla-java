@@ -1,41 +1,24 @@
 package com.kodilla.good.patterns;
 
-import com.kodilla.good.patterns.producentService.Contractor;
-import com.kodilla.good.patterns.producentService.Product;
-import com.kodilla.good.patterns.smallAirlineCompany.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.kodilla.good.patterns.producentService.*;
 
 public class MainClass {
 
-    public static List<Contractor> contractorList = prepareBasicContractorsList();
-
     public static void main(String[] args) {
 
-//        List<Flight> list = new ArrayList<>();
-//        list.add(new Flight("Radom", "Warszawa"));
-//        list.add(new Flight("Radom", "Warszawa"));
-//        list.add(new Flight("Katowice", "Berlin"));
+        OrderProcessor orderProcessor= new OrderProcessor(
+                                                    new MailService(),
+                                                    new OrderServiceHandler());
+
+        orderProcessor.process(new GlutenFreeShop(),
+                                    new Order(new User("Franek"), new Product("Milk", 34)));
+
+
+
+//        SmallAirportCompanyFrontDesk smallAirportCompanyFrontDesk = new SmallAirportCompanyFrontDesk(
+//                                                            new SercherTheAvaibleFlight(), new ListOfAvaibleFlights());
 //
-//        if (list.stream()
-//                .anyMatch(e -> "Radom".equals(e.getStart()) && "Warszawa".equals(e.getEnd()))) {
-//
-//        }
-
-//        list.stream()
-//                .filter(e -> "Katowice".equals(e.getStart()) && "Warszawa".equals(e.getEnd()))
-//                .findFirst()
-//                .orElse(new Flight("Waw", "Row"));
-
-//        System.out.println(dajLot(list, new Flight("Radomiak", "Warszawa")));
-
-
-        SmallAirportCompanyFrontDesk smallAirportCompanyFrontDesk = new SmallAirportCompanyFrontDesk(
-                                                            new SercherTheAvaibleFlight(), new ListOfAvaibleFlights());
-
-        smallAirportCompanyFrontDesk.process(new Client("Emilia", new Flight("Radom", "Rzym")));
-
+//        smallAirportCompanyFrontDesk.process(new Client("Emilia", new Flight("Radom", "Rzym")));
 
 
 
@@ -71,22 +54,6 @@ public class MainClass {
 
     }
 
-    public static List<Contractor> prepareBasicContractorsList() {
-        List<Contractor> list = new ArrayList<>();
-        list.add(new Contractor("ExtraFoodShop", new Product("Milk", 100)));
-        list.add(new Contractor("SlowFood", new Product("Cheese", 250)));
-        list.add(new Contractor("Health", new Product("Bread", 346)));
-        list.add(new Contractor("Vital", new Product("Carrot", 345)));
-        list.add(new Contractor("ExtraFoosShop", new Product("Natural Yogurt", 547 )));
-        return list;
-    }
 
-    public static boolean dajLot(List<Flight> list, Flight client) {
-        if (list.stream()
-                .anyMatch(e -> client.getStart().equals(e.getStart()) &&
-                                client.getEnd().equals(e.getEnd())))  {
-            return true;
-        } return false;
-    }
 
 }

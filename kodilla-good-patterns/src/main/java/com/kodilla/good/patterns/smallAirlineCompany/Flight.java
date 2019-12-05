@@ -20,6 +20,10 @@ public class Flight {
         return end;
     }
 
+    public void setEnd(String end) {
+        this.end=end;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

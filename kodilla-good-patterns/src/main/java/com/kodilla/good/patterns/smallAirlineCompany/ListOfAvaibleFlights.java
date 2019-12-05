@@ -2,7 +2,6 @@ package com.kodilla.good.patterns.smallAirlineCompany;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ListOfAvaibleFlights implements AvaibleFlight{
 
@@ -18,8 +17,9 @@ public class ListOfAvaibleFlights implements AvaibleFlight{
                         return true;
                     }
                     return false;
-                })
-                .collect(Collectors.toList());
+                });
+
+
 
 
         for (Flight indirectionFly : new FlightsList().getFlightList()) {

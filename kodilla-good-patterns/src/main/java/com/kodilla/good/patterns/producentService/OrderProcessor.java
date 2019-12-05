@@ -1,29 +1,22 @@
 package com.kodilla.good.patterns.producentService;
 
-import com.kodilla.good.patterns.MainClass;
+public class OrderProcessor {
 
-public class ContractorsService {
-
-    NewContractor newContractor;
     OrderInformationService orderInformationService;
     OrderService orderService;
 
-    public ContractorsService(
-                              NewContractor newContractor,
+    public OrderProcessor(
                               OrderInformationService orderInformationService,
                               OrderService orderService) {
-        this.newContractor=newContractor;
         this.orderInformationService = orderInformationService;
         this.orderService = orderService;
     }
 
 
-    public OrderDto process(Order order) {
-        Contractor newContractor = this.newContractor.createNewContractor();
-        MainClass.contractorList.add(newContractor);
-        boolean possibleToOrder = orderService.orderPossible(MainClass.contractorList, order);
-
+    public OrderDto process(Shop shop, Order order) {
+        boolean possibleToOrder = orderService.orderPossible(order);
         if (possibleToOrder) {
+            shop.process(order);
             orderInformationService.inform(order.getUser());
             return new OrderDto(order.getUser(), true);
         }
