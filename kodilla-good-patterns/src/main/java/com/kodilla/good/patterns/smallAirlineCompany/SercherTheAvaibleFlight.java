@@ -1,5 +1,9 @@
 package com.kodilla.good.patterns.smallAirlineCompany;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 public class SercherTheAvaibleFlight implements ClientRequest {
 
 
@@ -16,15 +20,22 @@ public class SercherTheAvaibleFlight implements ClientRequest {
 
     private boolean avaibleIndirectFlight(Flight flight) {
 
-        for (Flight fly : new FlightsList().getFlightList()) {
-            if (flight.getEnd().equals(fly.getEnd())) {
-                for (Flight f : new FlightsList().getFlightList()) {
-                    if (f.getStart().equals(flight.getStart()) && f.getEnd().equals(fly.getStart())) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        List<Flight> flights = new FlightsList().getFlightList();
+
+        List<Flight> theSameStart = flights.stream()
+                                            .filter(f -> flight.getStart().equals(f.getStart()))
+                                            .collect(Collectors.toList());
+
+        List<Flight> theSameEnd = flights.stream()
+                                            .filter(f -> flight.getEnd().equals(f.getEnd()))
+                                            .collect(Collectors.toList());
+
+        Optional<Flight> connection = theSameStart.stream()
+                                            .filter(start -> theSameEnd.stream().anyMatch(end -> end.getStart().equals(start.getEnd())))
+                                                                        .findFirst();
+
+        if (connection.isPresent()) {
+            return true;
+        } return false;
     }
 }

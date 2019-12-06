@@ -1,24 +1,24 @@
 package com.kodilla.good.patterns;
 
-import com.kodilla.good.patterns.producentService.*;
+import com.kodilla.good.patterns.smallAirlineCompany.*;
 
 public class MainClass {
 
     public static void main(String[] args) {
 
-        OrderProcessor orderProcessor= new OrderProcessor(
-                                                    new MailService(),
-                                                    new OrderServiceHandler());
-
-        orderProcessor.process(new GlutenFreeShop(),
-                                    new Order(new User("Franek"), new Product("Milk", 34)));
-
-
-
-//        SmallAirportCompanyFrontDesk smallAirportCompanyFrontDesk = new SmallAirportCompanyFrontDesk(
-//                                                            new SercherTheAvaibleFlight(), new ListOfAvaibleFlights());
+//        OrderProcessor orderProcessor= new OrderProcessor(
+//                                                    new MailService(),
+//                                                    new OrderServiceHandler());
 //
-//        smallAirportCompanyFrontDesk.process(new Client("Emilia", new Flight("Radom", "Rzym")));
+//        orderProcessor.process(new GlutenFreeShop(),
+//                                    new Order(new User("Franek"), new Product("Milk", 34)));
+
+
+
+        SmallAirportCompanyFrontDesk smallAirportCompanyFrontDesk = new SmallAirportCompanyFrontDesk(
+                                                            new SercherTheAvaibleFlight(), new ListOfAvaibleFlights());
+
+        smallAirportCompanyFrontDesk.process(new Client("Emilia", new Flight("Radom", "Rzym")));
 
 
 
