@@ -1,9 +1,8 @@
 package com.kodilla.spring.portfolio;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public final class Board {
 
     TaskList toDoList;
