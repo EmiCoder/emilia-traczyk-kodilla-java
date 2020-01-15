@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
@@ -16,8 +18,13 @@ public class CompanyDaoTestSuite {
     CompanyDao companyDao;
 
     @Test
+    public void testRetriveByName() {
+        List<Employee> listByName=companyDao.retrieveByName("Linda");
+        Assert.assertEquals(1, listByName.size());
+    }
+
+    @Test
     public void testSaveManyToMany(){
-        //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
@@ -38,7 +45,6 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
 
-        //When
         companyDao.save(softwareMachine);
         int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
@@ -46,18 +52,10 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
-        //Then
         Assert.assertNotEquals(0, softwareMachineId);
         Assert.assertNotEquals(0, dataMaestersId);
         Assert.assertNotEquals(0, greyMatterId);
 
-        //CleanUp
-        //try {
-        //    companyDao.deleteById(softwareMachineId);
-        //    companyDao.deleteById(dataMaestersId);
-        //    companyDao.deleteById(greyMatterId);
-        //} catch (Exception e) {
-        //    //do nothing
-        //}
+        companyDao.deleteAll();
     }
 }
