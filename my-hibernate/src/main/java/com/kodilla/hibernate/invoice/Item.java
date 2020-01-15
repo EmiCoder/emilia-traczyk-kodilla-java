@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name="ITEMS")
-public final class Item {
+public class Item {
 
     private int id;
     private Product product;
@@ -16,6 +16,7 @@ public final class Item {
     private int quantity;
     private BigDecimal value;
     private List<Product> products = new ArrayList<>();
+    private Invoice invoices;
 
 
     public Item() {
@@ -39,7 +40,6 @@ public final class Item {
     public void setId(int id) {
         this.id=id;
     }
-
 
 
     @Column(name="ITEM_PRICE")
@@ -84,5 +84,23 @@ public final class Item {
 
     public void setProducts(List<Product> products) {
         this.products=products;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product=product;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="INVOICE_ID")
+    public Invoice getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(Invoice invoices) {
+        this.invoices=invoices;
     }
 }

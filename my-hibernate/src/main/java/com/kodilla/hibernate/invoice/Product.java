@@ -3,10 +3,11 @@ package com.kodilla.hibernate.invoice;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
 
 @Entity
 @Table(name="PRODUCTS")
-public class Product {
+public final class Product {
 
     private int id;
     private String name;
