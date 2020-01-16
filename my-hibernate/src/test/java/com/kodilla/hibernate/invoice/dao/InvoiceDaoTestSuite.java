@@ -17,26 +17,19 @@ import java.math.BigDecimal;
 public class InvoiceDaoTestSuite {
 
     @Autowired
-    ProductDao productDao;
-    @Autowired
-    ItemDao itemDao;
-    @Autowired
     InvoiceDao invoiceDao;
+
+
 
     @Test
     public void testInvoiceDaoSave() {
-        Product product = new Product("Milk");
-        productDao.save(product);
-        Item item = new Item(new BigDecimal("25"), 2);
-        item.getProducts().add(product);
-        product.setItem(item);
-        itemDao.save(item);
+        Product product1 = new Product("Milk");
+        Item item = new Item(product1, new BigDecimal("25"), 2);
         Invoice invoice = new Invoice("123");
         invoice.getItems().add(item);
         item.setInvoices(invoice);
         invoiceDao.save(invoice);
 
-        String number=invoice.getNumber();
-        Assert.assertEquals("123", number);
+        Assert.assertEquals(1, invoice.getItems().size());
     }
 }
