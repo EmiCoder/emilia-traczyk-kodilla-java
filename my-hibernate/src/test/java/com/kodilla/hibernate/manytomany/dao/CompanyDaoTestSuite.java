@@ -19,10 +19,16 @@ public class CompanyDaoTestSuite {
 
     @Test
     public void testRetriveByName() {
-        List<Employee> listByName=companyDao.retrieveByName("Linda");
+        List<Employee> listByName=companyDao.retrieveByLastName("Linda");
         Assert.assertEquals(1, listByName.size());
     }
 
+
+    @Test
+    public void testRetrieveCompaniesByParam() {
+        List<Company> listByParam = companyDao.retrieveCompaniesByParam();
+        Assert.assertEquals(1, listByParam.size());
+    }
     @Test
     public void testSaveManyToMany(){
         Employee johnSmith = new Employee("John", "Smith");
