@@ -16,17 +16,19 @@ import java.util.List;
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testRetriveByName() {
-        List<Employee> listByName=companyDao.retrieveByLastName("Linda");
+        List<Employee> listByName=employeeDao.retrieveByLastName("Linda");
         Assert.assertEquals(1, listByName.size());
     }
 
 
     @Test
     public void testRetrieveCompaniesByParam() {
-        List<Company> listByParam = companyDao.retrieveCompaniesByParam();
+        List<Company> listByParam = companyDao.retrieveCompaniesByParam("sof");
         Assert.assertEquals(1, listByParam.size());
     }
     @Test
