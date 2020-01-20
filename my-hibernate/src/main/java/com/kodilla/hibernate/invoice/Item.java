@@ -81,7 +81,7 @@ public class Item {
         this.product=product;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="INVOICE_ID")
     public Invoice getInvoices() {
         return invoices;

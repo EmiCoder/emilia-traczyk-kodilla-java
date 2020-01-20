@@ -19,8 +19,6 @@ public class InvoiceDaoTestSuite {
     @Autowired
     InvoiceDao invoiceDao;
 
-
-
     @Test
     public void testInvoiceDaoSave() {
         Product product1 = new Product("Milk");
@@ -29,7 +27,6 @@ public class InvoiceDaoTestSuite {
         invoice.getItems().add(item);
         item.setInvoices(invoice);
         invoiceDao.save(invoice);
-
         Assert.assertEquals(1, invoice.getItems().size());
     }
 }
