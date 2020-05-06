@@ -1,0 +1,44 @@
+drop function if exists BookStatus;
+
+DELIMITER $$
+
+create function BookStatus(average double) returns varchar(20) deterministic
+begin
+declare book_status varchar(20) default 'false';
+if (average > 2) then set book_status = 'true';
+else return book_status;
+end if;
+return book_status;
+end $$
+
+DELIMITER ;
+i procedura, która aktualizuje kolumnę BESTSELLER
+drop procedure if exists UpdateBestsellers;
+
+DELIMITER $$
+
+create procedure UpdateBestsellers()
+begin
+
+declare BOOKSRENTS int;
+declare DAYS int;
+declare BOOKID int;
+declare AVERAGE_PER_MONTH decimal(5,2);
+declare FINISHED int default 0;
+declare ALL_BOOKS cursor for select BOOK_ID from books;
+declare continue handler for not found set FINISHED = 1;
+
+open ALL_BOOKS;
+while (FINISHED = 0) do fetch ALL_BOOKS into BOOKID;
+if (FINISHED = 0) then
+select sum(BOOK_ID = BOOKID) from rents into BOOKSRENTS;
+update books set BESTSELLER = BookStatus(BOOKSRENTS)
+where BOOK_ID = BOOKID;
+commit;
+end if;
+end while;
+close ALL_BOOKS;
+
+end $$
+
+DELIMITER ;
